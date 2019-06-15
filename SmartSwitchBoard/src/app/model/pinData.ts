@@ -1,4 +1,4 @@
-export class PinData {
-    public pin: number;
-    public val: number;
+export interface PinData {
+    pin: number;
+    val: number;
 }

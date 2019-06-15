@@ -1,6 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
+<ion-header class="header">
+  <ion-toolbar color="success">
+    <ion-title class="title">
       Silent Smart Switch
     </ion-title>
   </ion-toolbar>
@@ -8,36 +8,12 @@
 
 <ion-content>
   <div class="ion-padding">
-    <!-- Pin 1 -->
-    <ion-card>
+    <ion-card *ngFor="let pin of pins">
       <ion-item>
-        <ion-icon name="flashlight"></ion-icon>
-        <ion-label><input type="text" #pin1 placeholder="Pin 1" ></ion-label>
-        <ion-toggle #pin1Toggle (ionChange)="pinToggle(1, pin1Toggle.checked)"></ion-toggle>
-      </ion-item>
-    </ion-card>
-    <!-- Pin 2 -->
-    <ion-card>
-      <ion-item>
-        <ion-icon name="flashlight"></ion-icon>
-        <ion-label><input type="text" #pin2 placeholder="Pin 2" ></ion-label>
-        <ion-toggle #pin2Toggle (ionChange)="pinToggle(2, pin2Toggle.checked)"></ion-toggle>
-      </ion-item>
-    </ion-card>
-    <!-- Pin 3 -->
-    <ion-card>
-      <ion-item>
-        <ion-icon name="flashlight"></ion-icon>
-        <ion-label><input type="text" #pin3 placeholder="Pin 3"></ion-label>
-        <ion-toggle #pin3Toggle (ionChange)="pinToggle(3, pin3Toggle.checked)"></ion-toggle>
-      </ion-item>
-    </ion-card>
-    <!-- Pin 4 -->
-    <ion-card>
-      <ion-item>
-        <ion-icon name="flashlight"></ion-icon>
-        <ion-label><input type="text" #pin4 placeholder="Pin 4"></ion-label>
-        <ion-toggle #pin4Toggle (ionChange)="pinToggle(4, pin4Toggle.checked)"></ion-toggle>
+        <ion-icon [name]="pin.icon"></ion-icon>
+        <ion-input clear-input="true" [(ngModel)]="pin.name" [placeholder]="pin.placeholder"></ion-input>
+        <ion-toggle (ionChange)="pinToggle(pin.id, $event.target.checked)"></ion-toggle>
+        <ion-icon name="time"></ion-icon>
       </ion-item>
     </ion-card>
   </div>

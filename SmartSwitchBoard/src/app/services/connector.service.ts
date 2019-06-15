@@ -26,8 +26,8 @@ export class ConnectorService {
 
     let soc = new socket();
     soc.open(
-      '192.168.4.1',
-      80,
+      this.url,
+      this.port,
       function() {
         // invoked after successful opening of socketvar
         var data = new Uint8Array(dataString.length);
@@ -43,5 +43,4 @@ export class ConnectorService {
         soc.close();
       });
     }
-
 }

@@ -8,14 +8,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-
-// const config: SocketIoConfig = { url: 'http://192.168.4.1:80', options: {} };
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

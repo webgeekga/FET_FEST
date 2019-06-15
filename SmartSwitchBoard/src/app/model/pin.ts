@@ -1,8 +1,8 @@
 import { PinData } from './pinData';
 
-export class Pin {
-    public name: string;
-    public msgtype: number;
-    public data: PinData;
-    public result: number;
+export interface Pin {
+    name: string;
+    msgtype: number;
+    data: PinData;
+    result?: number;
 }
