@@ -1,5 +1,6 @@
 import { Pin } from './../model/pin';
 import { Injectable } from '@angular/core';
+import { Socket } from 'ng-socket-io';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ConnectorService {
   private url  = 'http://192.168.4.1';
   private port = 80;
 
-  constructor() { }
+  constructor(private socket: Socket) { }
 
   public requestMapper(pin: Pin): string {
     const tilde: string = '~';
@@ -21,14 +22,9 @@ export class ConnectorService {
       
   public sendPacket(pin) {
     var delay = 5000;	/// 5 seconds timeout
-    (<any>window).chrome.sockets.tcp.create({}, createInfo => { //callback function with createInfo as the parameter
-      var _socketTcpId = createInfo.socketId;
-      (<any>window).chrome.sockets.tcp.connect(_socketTcpId, this.url, this.port, result => { //callback function with result as the parameter
-        if (result === 0) {
-          /// connection ok, send the packet
-          (<any>window).chrome.sockets.tcp.send(_socketTcpId, this.requestMapper(pin));
-        }
-      });
+    let sockets = this.socket.connect();
+    console.log(sockets);
+    this.socket.emit(this.requestMapper(pin));
     }
 
 }

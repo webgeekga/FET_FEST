@@ -26,7 +26,7 @@ export class HomePage {
     this.pin.data = this.pinData;
     this.pin.msgtype = 1;
     this.pin.name = `0001`;
-    let req = this.connectorService.requestMapper(this.pin);
+    let req = this.connectorService.sendPacket(this.pin);
     console.log(req);
   }
 }
