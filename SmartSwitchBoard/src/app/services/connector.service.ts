@@ -12,13 +12,13 @@ export class ConnectorService {
 
   constructor() { }
 
-  public requestMapper(pin): string {
+  public requestMapper(pin: Pin): string {
     const tilde: string = '~';
     const bar: string = '|';
     let requestBody = JSON.stringify(pin);
     return tilde + requestBody.length + bar + requestBody + tilde;
   }
-  public connectToWifi(pin) {
+  public connectToWifi(pin: Pin) {
       
   }
 
