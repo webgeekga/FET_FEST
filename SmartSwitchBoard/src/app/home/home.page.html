@@ -1,14 +1,53 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Smart Switch Board
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <!-- Pin 1 -->
+    <ion-card>
+      <ion-item>
+        <ion-icon name="flashlight"></ion-icon>
+        <ion-label>
+          <ion-input clearInput placeholder="Pin 1"></ion-input>
+        </ion-label>
+        <ion-toggle #pin1Toggle (ionChange)="pinToggle(1, pin1Toggle.checked)"></ion-toggle>
+      </ion-item>
+    </ion-card>
+    <!-- Pin 2 -->
+    <ion-card>
+      <ion-item>
+        <ion-icon name="flashlight"></ion-icon>
+        <ion-label>
+          <ion-input clearInput placeholder="Pin 2"></ion-input>
+        </ion-label>
+        <ion-toggle #pin2Toggle (ionChange)="pinToggle(2, pin2Toggle.checked)"></ion-toggle>
+      </ion-item>
+    </ion-card>
+    <!-- Pin 3 -->
+    <ion-card>
+      <ion-item>
+        <ion-icon name="flashlight"></ion-icon>
+        <ion-label>
+          <ion-input clearInput placeholder="Pin 3"></ion-input>
+        </ion-label>
+        <ion-toggle #pin3Toggle (ionChange)="pinToggle(3, pin3Toggle.checked)"></ion-toggle>
+      </ion-item>
+    </ion-card>
+    <!-- Pin 4 -->
+    <ion-card>
+      <ion-item>
+        <ion-icon name="flashlight"></ion-icon>
+        <ion-label>
+          <ion-input clearInput placeholder="Pin 4"></ion-input>
+        </ion-label>
+        <ion-toggle #pin4Toggle (ionChange)="pinToggle(4, pin4Toggle.checked)"></ion-toggle>
+      </ion-item>
+    </ion-card>
   </div>
+  
 </ion-content>

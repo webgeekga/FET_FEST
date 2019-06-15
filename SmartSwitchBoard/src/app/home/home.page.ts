@@ -9,4 +9,9 @@ export class HomePage {
 
   constructor() {}
 
+  public useMode: string = 'md';
+
+  public pinToggle(pinNumber: number, toggleValue: boolean): void {
+    console.log(pinNumber, toggleValue);
+  }
 }
