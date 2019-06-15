@@ -18,8 +18,17 @@ export class ConnectorService {
     let requestBody = JSON.stringify(pin);
     return tilde + requestBody.length + bar + requestBody + tilde;
   }
-  public connectToWifi(pin: Pin) {
       
-  }
+  public sendPacket(pin) {
+    var delay = 5000;	/// 5 seconds timeout
+    (<any>window).chrome.sockets.tcp.create({}, createInfo => { //callback function with createInfo as the parameter
+      var _socketTcpId = createInfo.socketId;
+      (<any>window).chrome.sockets.tcp.connect(_socketTcpId, this.url, this.port, result => { //callback function with result as the parameter
+        if (result === 0) {
+          /// connection ok, send the packet
+          (<any>window).chrome.sockets.tcp.send(_socketTcpId, this.requestMapper(pin));
+        }
+      });
+    }
 
 }
