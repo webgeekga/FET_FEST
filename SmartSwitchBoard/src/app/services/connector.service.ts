@@ -1,5 +1,6 @@
 import { Pin } from './../model/pin';
 import { Injectable } from '@angular/core';
+declare var Socket: any
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,27 @@ export class ConnectorService {
   }
       
   public sendPacket(pin) {
+    let dataString = this.requestMapper(pin);
+    let socket = Socket || window['Socket'];
 
+    let soc = new socket();
+    soc.open(
+      '192.168.4.1',
+      80,
+      function() {
+        // invoked after successful opening of socketvar
+        var data = new Uint8Array(dataString.length);
+        for (var i = 0; i < data.length; i++) {
+          data[i] = dataString.charCodeAt(i);
+        }
+        soc.write(data);
+        soc.shutdownWrite();
+      },
+      function(errorMessage) {
+        // invoked after unsuccessful opening of socket
+        console.log(errorMessage);
+        soc.close();
+      });
     }
 
 }
